@@ -258,6 +258,7 @@ class Data {
     data['delay'] = delay;
     data['currency_code'] = currencyCode;
     data['currency_symbol'] = currencySymbol;
+    
     data['invoiceUrl'] = invoiceUrl;
 
     if (customerScore != null) {

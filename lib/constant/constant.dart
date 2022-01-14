@@ -31,3 +31,4 @@ const greyText = TextStyle(
 );
 
 const appPrimaryColor = Color(0xff65a88d);
+const blackColor = Colors.black;

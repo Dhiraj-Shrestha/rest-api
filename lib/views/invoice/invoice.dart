@@ -4,7 +4,6 @@ import 'package:rest_api/constant/constant.dart';
 import 'package:rest_api/models/invoice.dart';
 import 'package:rest_api/views/invoice/invoice_by_invoice/invoice_by_invoice.dart';
 import 'package:rest_api/views/invoice/invoice_by_quote/invoice_by_quote.dart';
-import 'package:rest_api/widgets/drawer.dart';
 
 class Invoice extends StatefulWidget {
   const Invoice({Key? key}) : super(key: key);
@@ -14,9 +13,9 @@ class Invoice extends StatefulWidget {
 }
 
 class _InvoiceState extends State<Invoice> with SingleTickerProviderStateMixin {
-  int _dropDownValue = 0;
+  final int _dropDownValue = 0;
   var myController = TextEditingController();
-  late Future<InvoiceModel> _invoiceModel;
+  late Future<InvoiceModel?> _invoiceModel;
 
   @override
   void initState() {
@@ -31,11 +30,6 @@ class _InvoiceState extends State<Invoice> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const DrawerPage(),
-      appBar: AppBar(
-        backgroundColor: Colors.grey.shade300,
-      ),
-      backgroundColor: Colors.white,
       body: Column(
         children: [
           Padding(
@@ -142,9 +136,12 @@ class _InvoiceState extends State<Invoice> with SingleTickerProviderStateMixin {
                             )
                           ],
                           onChanged: (int? value) {
+                            _dropDownValue == value;
                             setState(() {
-                              _dropDownValue = value!;
-                              _tabController.index = _dropDownValue;
+                              _dropDownValue == 0
+                                  ? CallApi().getInvoice()
+                                  : CallApi().getInvoiceQuote(
+                                      'v2/invoice_list?invoice_type=quote');
                             });
                           },
                         ),

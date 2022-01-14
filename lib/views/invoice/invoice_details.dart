@@ -12,10 +12,9 @@ class InvoiceDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(2.0),
+        padding: const EdgeInsets.all(1.0),
         child: SizedBox(
           child: ListTile(
-            minVerticalPadding: 2.0,
             leading: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

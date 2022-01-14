@@ -3,7 +3,6 @@ import 'package:rest_api/api/api.dart';
 import 'package:rest_api/models/invoice.dart';
 import 'package:rest_api/views/invoice/invoice_details.dart';
 
-
 class InvoiceByInvoice extends StatefulWidget {
   const InvoiceByInvoice({Key? key}) : super(key: key);
 
@@ -12,7 +11,7 @@ class InvoiceByInvoice extends StatefulWidget {
 }
 
 class _InvoiceByInvoiceState extends State<InvoiceByInvoice> {
-  late Future<InvoiceModel> _invoiceModel;
+  late Future<InvoiceModel?> _invoiceModel;
 
   @override
   void initState() {
@@ -25,7 +24,7 @@ class _InvoiceByInvoiceState extends State<InvoiceByInvoice> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          FutureBuilder<InvoiceModel>(
+          FutureBuilder<InvoiceModel?>(
             future: _invoiceModel,
             builder: (context, snapshot) {
               if (snapshot.hasData) {

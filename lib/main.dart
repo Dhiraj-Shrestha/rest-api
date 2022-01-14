@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
             ColorScheme.fromSwatch().copyWith(secondary: appPrimaryColor),
       ),
       onGenerateRoute: Routers.onGenerateRoute,
-      initialRoute: bankRoute,
+      initialRoute: homeRoute,
     );
   }
 }

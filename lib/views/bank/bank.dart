@@ -3,7 +3,6 @@ import 'package:rest_api/api/api.dart';
 import 'package:rest_api/models/bank_model.dart';
 
 import 'package:rest_api/views/bank/bank_ui.dart';
-import 'package:rest_api/widgets/drawer.dart';
 
 class BankConnected extends StatefulWidget {
   const BankConnected({Key? key}) : super(key: key);
@@ -14,7 +13,7 @@ class BankConnected extends StatefulWidget {
 
 class _BankConnectedState extends State<BankConnected> {
   // //get bank data
-  late Future<BankConnectedModel> _bankModel;
+  late Future<BankConnectedModel?> _bankModel;
   @override
   void initState() {
     _bankModel = CallApi().getBankConnected();
@@ -24,15 +23,10 @@ class _BankConnectedState extends State<BankConnected> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const DrawerPage(),
-      appBar: AppBar(
-        backgroundColor: Colors.grey.shade300,
-      ),
       body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
         child: Column(
           children: [
-            FutureBuilder<BankConnectedModel>(
+            FutureBuilder<BankConnectedModel?>(
               future: _bankModel,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
