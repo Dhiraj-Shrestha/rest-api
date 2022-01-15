@@ -23,14 +23,18 @@ class _BankConnectedState extends State<BankConnected> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            FutureBuilder<BankConnectedModel?>(
+      body: ListView(
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height - 82,
+            child: FutureBuilder<BankConnectedModel?>(
               future: _bankModel,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
+                    scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: snapshot.data!.payload?.length,
                     itemBuilder: (context, index) {
@@ -48,8 +52,8 @@ class _BankConnectedState extends State<BankConnected> {
                 }
               },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

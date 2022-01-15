@@ -14,6 +14,7 @@ class InvoiceDetails extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(1.0),
         child: SizedBox(
+          height: 61,
           child: ListTile(
             leading: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

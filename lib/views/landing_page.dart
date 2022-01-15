@@ -28,48 +28,65 @@ class _LandingPageState extends State<LandingPage> {
         titleText: _cIndex == 0 ? 'Invoice' : 'Bank',
       ),
       body: tabs[_cIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        currentIndex: _cIndex,
-        selectedIconTheme:
-            const IconThemeData(color: Colors.blueAccent, size: 20),
-        type: BottomNavigationBarType.fixed,
-        iconSize: 20.0,
-        // selectedItemColor: Colors.deepPurple,
-        // unselectedItemColor: Colors.greenAccent,
+      bottomNavigationBar: SizedBox(
+        height: 80,
+        child: BottomNavigationBar(
+          backgroundColor: Colors.white,
+          elevation: 0.0,
+          currentIndex: _cIndex,
+          selectedIconTheme:
+              const IconThemeData(color: Colors.blueAccent, size: 20),
+          type: BottomNavigationBarType.fixed,
+          iconSize: 20.0,
+          // selectedItemColor: Colors.deepPurple,
+          // unselectedItemColor: Colors.greenAccent,
 
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.book,
-              size: 20.0,
+          items: [
+            BottomNavigationBarItem(
+              icon: const Icon(
+                FontAwesomeIcons.book,
+                size: 20.0,
+              ),
+              label: '',
+              activeIcon: Container(
+                height: 50.0,
+                width: 50.0,
+                decoration: const BoxDecoration(
+                    color: Color(0xffd3f8e7),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                child: const Icon(
+                  FontAwesomeIcons.book,
+                  color: blackColor,
+                  size: 25.0,
+                ),
+              ),
             ),
-            label: '',
-            activeIcon: Icon(
-              FontAwesomeIcons.book,
-              color: blackColor,
-              size: 25,
+            BottomNavigationBarItem(
+              icon: const Icon(
+                FontAwesomeIcons.building,
+                size: 20.0,
+              ),
+              label: '',
+              activeIcon: Container(
+                height: 50.0,
+                width: 50.0,
+                decoration: const BoxDecoration(
+                    color: Color(0xffd3f8e7),
+                    borderRadius: BorderRadius.all(Radius.circular(15))),
+                child: const Icon(
+                  FontAwesomeIcons.building,
+                  color: blackColor,
+                  size: 25.0,
+                ),
+              ),
             ),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              FontAwesomeIcons.building,
-              size: 20.0,
-            ),
-            label: '',
-            activeIcon: Icon(
-              FontAwesomeIcons.building,
-              color: blackColor,
-              size: 25.0,
-            ),
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _cIndex = index;
-          });
-        },
+          ],
+          onTap: (index) {
+            setState(() {
+              _cIndex = index;
+            });
+          },
+        ),
       ),
     );
   }

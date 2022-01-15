@@ -15,32 +15,28 @@ class InvoiceByQuote extends StatefulWidget {
 class _InvoiceByQuoteState extends State<InvoiceByQuote> {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          FutureBuilder<InvoiceModel?>(
-            future: widget.invoiceModel,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                return ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.vertical,
-                  itemCount: snapshot.data!.payload!.data?.length,
-                  itemBuilder: (context, index) {
-                    var mydata = snapshot.data!.payload!.data![index];
-                    return InvoiceDetails(mydata: mydata);
-                  },
-                );
-              } else if (snapshot.hasError) {
-                return const Text('Cannot load at this time');
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
-          ),
-        ],
+    return Expanded(
+      child: FutureBuilder<InvoiceModel?>(
+        future: widget.invoiceModel,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.vertical,
+              itemCount: snapshot.data!.payload!.data?.length,
+              itemBuilder: (context, index) {
+                var mydata = snapshot.data!.payload!.data![index];
+                return InvoiceDetails(mydata: mydata);
+              },
+            );
+          } else if (snapshot.hasError) {
+            return const Text('Cannot load at this time');
+          } else {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+        },
       ),
     );
   }

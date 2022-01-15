@@ -7,25 +7,24 @@ import 'package:rest_api/models/invoice.dart';
 
 class CallApi {
   final String baseUrl =
-      'https://4b0ef9d2-d78e-4f0b-a400-73aadc0b3202.mock.pstmn.io/api/';
+      'https://5c75f305-b826-4bbc-92e8-9a90e9e67425.mock.pstmn.io/api/';
 
   //------------ get all banks connected---------------------
   Future<BankConnectedModel?> getBankConnected() async {
     String fullUrl = baseUrl + 'mobile/bankconnect/connected';
 
     var response = await http.get(Uri.parse(fullUrl), headers: setHeaders());
-     try {
-    if (response.statusCode == 200) {
-      var jsonString = response.body;
-      var jsonMap = json.decode(jsonString);
+    try {
+      if (response.statusCode == 200) {
+        var jsonString = response.body;
+        var jsonMap = json.decode(jsonString);
 
-      BankConnectedModel bankModel = BankConnectedModel.fromJson(jsonMap);
-      return bankModel;
-    } else {
-     return null; 
-    }
-     }
-     on Exception {
+        BankConnectedModel bankModel = BankConnectedModel.fromJson(jsonMap);
+        return bankModel;
+      } else {
+        return null;
+      }
+    } on Exception {
       throw "Unable to retrieve data.";
     }
   }
@@ -51,8 +50,7 @@ class CallApi {
 
   Future<InvoiceModel?> getInvoice() async {
     String fullUrl = baseUrl + 'v2/invoice_list?searchKeyword=eden';
-    
- 
+
     try {
       var response = await http.get(Uri.parse(fullUrl), headers: setHeaders());
       if (response.statusCode == 200) {
@@ -61,9 +59,8 @@ class CallApi {
 
         InvoiceModel invoiceModel = InvoiceModel.fromJson(jsonMap);
         return invoiceModel;
-      }
-      else{
-          return null;
+      } else {
+        return null;
       }
     } on Exception {
       throw "Unable to retrieve data.";
