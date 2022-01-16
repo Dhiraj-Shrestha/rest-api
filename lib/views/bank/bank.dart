@@ -34,7 +34,6 @@ class _BankConnectedState extends State<BankConnected> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
-                    scrollDirection: Axis.vertical,
                     shrinkWrap: true,
                     itemCount: snapshot.data!.payload?.length,
                     itemBuilder: (context, index) {

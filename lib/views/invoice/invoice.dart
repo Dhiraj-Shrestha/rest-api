@@ -15,7 +15,7 @@ class Invoice extends StatefulWidget {
 
 class _InvoiceState extends State<Invoice> with SingleTickerProviderStateMixin {
   int? _dropDownValue = 0;
-  late bool tapChange;
+  bool tapChange = true;
   var myController = TextEditingController();
   late Future<InvoiceModel?> _invoiceModel;
 
@@ -158,7 +158,7 @@ class _InvoiceState extends State<Invoice> with SingleTickerProviderStateMixin {
               ),
             ),
             Expanded(
-              child: tapChange
+              child: tapChange == true
                   ? TabBarView(
                       controller: _tabController,
                       children: [
